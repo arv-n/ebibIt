@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "ebibIt!",
+  "version": "1.0",
+  "description": "Downloads PDF along with its citation details to ebib",
+  "host_permissions": ["https://scholar.google.com/", "https://scholar.googleusercontent.com/"],
+  "permissions": ["activeTab", "notifications", "storage", "downloads", "contextMenus"],
+  "action":{
+    "default_icon": {
+      "16": "icons/icon.png",
+      "48": "icons/icon.png",
+      "128": "icons/icon.png"
+    }
+  },
+  "background":{
+    "service_worker": "background.js"
+  }
+}
