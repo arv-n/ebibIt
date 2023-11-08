@@ -1,4 +1,4 @@
-![ebibIt Icon](icons/icon.png)
+![ebibIt Icon](icons/icon250.png)
 
 # ebibIt!
 
