@@ -162,11 +162,12 @@ chrome.notifications.onButtonClicked.addListener(function (notificationId, butto
       fileName = result.year + result.author.replaceAll(/,/g,'')
         + '-' + result.title.replaceAll(/[^a-zA-Z ]/g, "");
       fileName = fileName.replaceAll(' ', '');
-      const bibtexMessage = writeBibtex(result, fileName);
-      communicationProtocol(bibtexMessage);			     
       chrome.storage.session.get(["pdfUrl"]).then((urlObj) => {
+	//console.log(urlObj);
 	downloadPDF(urlObj, fileName);
       });
+      const bibtexMessage = writeBibtex(result, fileName);
+      communicationProtocol(bibtexMessage);			     
     });					     
   }
   else {
@@ -179,9 +180,11 @@ chrome.notifications.onButtonClicked.addListener(function (notificationId, butto
 function downloadPDF(urlObj, fileName){
   const options = {
     url: urlObj['pdfUrl'],
+    conflictAction: "overwrite",
     filename: 'ebibdB/' + fileName + '.pdf',
+    saveAs: true
   };
-  console.log(options.url);
+  //console.log(options.url);
   // Initiate the download
   chrome.downloads.download(options, function(downloadId){
     if (chrome.runtime.lastError) 
